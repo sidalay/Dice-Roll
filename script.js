@@ -12,15 +12,31 @@ const BtnNew = document.querySelector('.btn--new');
 const BtnRoll = document.querySelector('.btn--roll');
 const BtnHold = document.querySelector('.btn--hold');
 
-// Starting conditions
-Score0Ele.textContent = 0;
-Score1Ele.textContent = 0;
-DiceEle.classList.add('hidden');
+let Scores, CurrentScore, ActivePlayer, Playing;
 
-const Scores = [0,0];
-let CurrentScore = 0;
-let ActivePlayer = 0;
-let Playing = true;
+// Starting conditions
+const Init = function() {
+    Score0Ele.textContent = 0;
+    Score1Ele.textContent = 0;
+    
+    Scores = [0,0];
+    CurrentScore = 0;
+    ActivePlayer = 0;
+    Playing = true;
+    
+    Score0Ele.textContent = 0;
+    Score1Ele.textContent = 0;
+    Current0Ele.textContent = 0;
+    Current1Ele.textContent = 0;
+
+    DiceEle.classList.add('hidden');
+    Player0Ele.classList.remove('player--winner');
+    Player1Ele.classList.remove('player--winner');
+    Player1Ele.classList.remove('player--active');
+    document.querySelector('.player--0').classList.add('player--active');
+}
+
+Init();
 
 const SwitchPlayer = function() {
     document.getElementById(`current--${ActivePlayer}`).textContent = 0;
@@ -52,7 +68,7 @@ BtnRoll.addEventListener('click', function() {
     }
 })
 
-// Hold btn functionality
+// Hold functionality
 BtnHold.addEventListener('click', function() {
     if (Playing) {
         // 1. Add current score to active player's score
@@ -72,3 +88,6 @@ BtnHold.addEventListener('click', function() {
         }
     }
 })
+
+// Reset functionality
+BtnNew.addEventListener('click', Init);
