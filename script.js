@@ -1,6 +1,8 @@
 'use strict';
 
 // Selecting elements
+const Player0Ele = document.querySelector('.player--0');
+const Player1Ele = document.querySelector('.player--1');
 const Score0Ele = document.querySelector('#score--0');
 const Score1Ele = document.getElementById('score--1');
 const Current0Ele = document.getElementById('current--0');
@@ -15,7 +17,9 @@ Score0Ele.textContent = 0;
 Score1Ele.textContent = 0;
 DiceEle.classList.add('hidden');
 
+const Scores = [0,0];
 let CurrentScore = 0;
+let ActivePlayer = 0;
 
 // Rolling dice functionality
 BtnRoll.addEventListener('click', function() {
@@ -29,10 +33,14 @@ BtnRoll.addEventListener('click', function() {
     if (Dice !== 1) {
         // Add dice to current score
         CurrentScore += Dice;
-        Current0Ele.textContent = CurrentScore; // CHANGE LATER
+        document.getElementById(`current--${ActivePlayer}`).textContent = CurrentScore;
     }
     else {
         // Switch to next player
-
+        document.getElementById(`current--${ActivePlayer}`).textContent = 0;
+        CurrentScore = 0;
+        ActivePlayer = ActivePlayer === 0 ? 1 : 0;
+        Player0Ele.classList.toggle('player--active');
+        Player1Ele.classList.toggle('player--active');
     }
 })
