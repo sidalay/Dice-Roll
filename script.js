@@ -76,7 +76,7 @@ BtnHold.addEventListener('click', function() {
         document.getElementById(`score--${ActivePlayer}`).textContent = Scores[ActivePlayer];
         
         // 2. Check if active player's score is >= 100 : FINISH GAME
-        if (Scores[ActivePlayer] >= 20) {
+        if (Scores[ActivePlayer] >= 100) {
             Playing = false;
             DiceEle.classList.add('hidden');
             document.querySelector(`.player--${ActivePlayer}`).classList.add('player--winner');
