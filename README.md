@@ -1,4 +1,4 @@
-# PigGame
+# Dice Roll
 Number Gambling Game based off of Javascript course
 
 <img src="https://cdn.discordapp.com/attachments/751031311447097385/982774040907374592/brave_nsd1efbVpn.png" alt="GameBeginning" style="height: 50%; width:50%;"/>
